@@ -2,13 +2,11 @@ function Article(props) {
   return (
     <>
       <div>
-        <h1>{props.name}</h1>
+        <h3>{props.title}</h3>
       </div>
-      <div>
-        {props.titles.map((title) => {
-          return <div>{title}</div>;
-        })}
-      </div>
+      <small>
+        Date: {props.date}, tags: {props.tags.join(",")}
+      </small>
     </>
   );
 }

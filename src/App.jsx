@@ -1,11 +1,10 @@
 import "./App.css";
-import Article from "./components/Arcticle.jsx";
+import Home from "./pages/Index";
 
 function App() {
   return (
     <div className="App">
-      <Article name="Yoga" titles={["Reactjs", "NextJs", "NodeJs"]} />
-      <Article name="Alifa" titles={["Html", "css", "javascript"]} />
+      <Home />
     </div>
   );
 }
