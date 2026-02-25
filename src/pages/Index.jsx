@@ -1,31 +1,24 @@
-import React, { useState } from "react"; // Import useState hook from React
-import posts from "../posts.json";
+import { useState } from "react"; // Import useState hook from React
+import postsData from "../posts.json";
 import Article from "../components/Arcticle";
+import Search from "../components/Search";
 
 function Homepage() {
-  // membuat state search
-  const [search, setSearch] = useState("");
+  const [posts, setPosts] = useState(postsData);
 
-  // membuat function changeSearch
-  const changeSearch = (event) => {
-    setSearch(event.target.value);
+  const onSearchChange = (value) => {
+    console.log(value);
+    const filteredPosts = postsData.filter((item) =>
+      item.title.includes(value),
+    );
+    setPosts(filteredPosts);
   };
-
   return (
     <>
       <h1>Simple blog</h1>
-      {/* Membuat input search */}
-      <div>
-        Cari Artikel : <input onChange={changeSearch}></input>
-      </div>
-      <small>Ditemukan 0 data dengan pencarian kata {search}</small>
-      {posts.map((blog, index) => (
-        <Article
-          title={blog.title}
-          tags={blog.tags}
-          date={blog.date}
-          key={index}
-        />
+      <Search onSearchChange={onSearchChange} />
+      {posts.map((props, index) => (
+        <Article {...props} key={index} />
       ))}
     </>
   );
