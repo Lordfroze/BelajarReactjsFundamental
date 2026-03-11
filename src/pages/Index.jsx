@@ -6,6 +6,8 @@ import Search from "../components/Search"; // Import Search component from Searc
 function Homepage() {
   // membuat state posts dengan nilai awal postsData
   const [posts, setPosts] = useState(postsData);
+  // membuat state totalPosts dengan nilai awal postsData.length
+  const [totalPosts, setTotalPosts] = useState(0);
 
   // membuat function onSearchChange yang menerima value
   const onSearchChange = (value) => {
@@ -16,11 +18,14 @@ function Homepage() {
     );
     // mengupdate state posts dengan nilai filteredPosts
     setPosts(filteredPosts);
+    // mengupdate state totalPosts dengan nilai filteredPosts.length
+    setTotalPosts(filteredPosts.length);
   };
   return (
     <>
       <h1>Simple blog</h1>
-      <Search onSearchChange={onSearchChange} />
+      {/* menampilkan Search component */}
+      <Search onSearchChange={onSearchChange} totalPosts={totalPosts} />
       {posts.map((props, index) => (
         <Article {...props} key={index} />
       ))}
