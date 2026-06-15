@@ -4,20 +4,30 @@ function Search(props) {
   // membuat state search dengan nilai awal ""
   const [search, setSearch] = useState("");
 
-  // membuat function onSearchChange yang menerima event
-  const onSearchChange = (event) => {
-    setSearch(event.target.value);
-    props.onSearchChange(event.target.value);
+  // membuat function onSearchChange yang mengirim nilai search ke parent component dan mengupdate state posts
+  const onSearchChange = () => {
+    props.onSearchChange(search);
+  };
+
+  // jika user menekan tombol Enter, maka akan memanggil function onSearchChange
+  const SearchKeydown = (e) => {
+    if (e.key === "Enter") {
+      onSearchChange();
+    }
   };
 
   return (
     <>
       <div>
-        {/* membuat input search dengan onChange yang memanggil onSearchChange */}
-        Cari Artikel : <input onChange={onSearchChange}></input>
+        Cari Artikel :{" "}
+        <input
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={SearchKeydown}
+        ></input>
+        {/* onClick Methods */}
+        <button onClick={onSearchChange}>Cari</button>
       </div>
       <small>
-        {/* menampilkan totalPosts */}
         Ditemukan {props.totalPosts} data dengan pencarian kata {search}
       </small>
     </>
