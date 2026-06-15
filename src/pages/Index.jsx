@@ -1,6 +1,6 @@
 import { useState } from "react"; // Import useState hook from React
 import postsData from "../posts.json"; // Import posts data from JSON file
-import Article from "../components/Arcticle";
+import Article from "../components/Article";
 import Search from "../components/Search"; // Import Search component from Search.jsx file
 
 function Homepage() {
