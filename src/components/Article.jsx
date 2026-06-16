@@ -1,14 +1,14 @@
+import { useContext } from "react";
+import { GlobalContext } from "../context"; // import global context
+
 // membuat ArticleStatus component
 const ArticleStatus = ({ isNew }) => {
   return isNew && <span> Baru</span>;
 };
 
-// membuat newArticle component
-const NewArticle = () => {
-  return <span> Baru!</span>;
-};
-
 function Article(props) {
+  const user = useContext(GlobalContext);
+
   return (
     <>
       <div>
@@ -18,9 +18,11 @@ function Article(props) {
         Date: {props.date}, tags: {props.tags.join(",")}
         {/* menampilkan ArticleStatus component */}
         <ArticleStatus isNew={props.isNew} />{" "}
-        {/* menampilkan NewArticle component jika props.isNew adalah true*/}
-        {props.isNew && <NewArticle />}
       </small>
+      <div>
+        {/*  menampilkan nama user dari GlobalContext */}
+        <small>Posted by: {user.name}</small>
+      </div>
     </>
   );
 }
