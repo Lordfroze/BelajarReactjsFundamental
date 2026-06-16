@@ -18,12 +18,17 @@ function Homepage() {
     setTotalPosts(filteredPosts.length);
   };
 
-  // membuat useEffect untuk mengambil data dari API JSONPlaceholder
+  // useEffect pertama untuk mengambil data dari API JSONPlaceholder
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/todos")
       .then((response) => response.json())
       .then((json) => setExternalPosts(json));
-  }, []); //
+  }, []);
+
+  // useEffect kedua untuk menampilkan ada post baru di console
+  useEffect(() => {
+    console.log("Ada post baru");
+  }, [posts]);
 
   return (
     <>
