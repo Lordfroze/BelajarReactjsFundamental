@@ -1,4 +1,4 @@
-import { useState } from "react"; // Import useState hook from React
+import { useState, useEffect } from "react"; // Import useState and useEffect hooks from React
 import postsData from "../posts.json"; // Import posts data from JSON file
 import Article from "../components/Article";
 import Search from "../components/Search"; // Import Search component from Search.jsx file
@@ -16,6 +16,16 @@ function Homepage() {
     setPosts(filteredPosts);
     setTotalPosts(filteredPosts.length);
   };
+
+  // membuat useEffect yang akan dijalankan setiap kali component render
+  useEffect(() => {
+    console.log("compnent di render");
+
+    return () => {
+      console.log("component di unmount / di destroy");
+    };
+  }, [posts]);
+
   return (
     <>
       <h1>Simple blog</h1>
