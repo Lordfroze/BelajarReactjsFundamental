@@ -17,14 +17,15 @@ function Homepage() {
     setTotalPosts(filteredPosts.length);
   };
 
-  // membuat useEffect yang akan dijalankan setiap kali component render
+  // membuat useEffect
   useEffect(() => {
-    console.log("compnent di render");
+    console.log("compnent di render"); // ketika component render pertama kali
 
     return () => {
+      // ketika component di unmount / di destroy
       console.log("component di unmount / di destroy");
     };
-  }, [posts]);
+  }, [posts]); // ketika posts berubah
 
   return (
     <>
