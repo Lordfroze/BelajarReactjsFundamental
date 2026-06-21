@@ -6,7 +6,6 @@ import Search from "../components/Search"; // Import Search component from Searc
 function Homepage() {
   const [posts, setPosts] = useState(postsData);
   const [totalPosts, setTotalPosts] = useState(0);
-  const [externalPosts, setExternalPosts] = useState([]); // Menyimpan data dari API JSONPlaceholder
 
   // membuat function onSearchChange yang menerima value
   const onSearchChange = (value) => {
@@ -19,16 +18,11 @@ function Homepage() {
   };
 
   // useEffect pertama untuk mengambil data dari API JSONPlaceholder
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos")
-      .then((response) => response.json())
-      .then((json) => setExternalPosts(json));
-  }, []);
-
-  // useEffect kedua untuk menampilkan ada post baru di console
-  useEffect(() => {
-    console.log("Ada post baru");
-  }, [posts]);
+  // useEffect(() => {
+  //   fetch("https://jsonplaceholder.typicode.com/todos")
+  //     .then((response) => response.json())
+  //     .then((json) => setExternalPosts(json));
+  // }, []);
 
   return (
     <>
@@ -37,14 +31,6 @@ function Homepage() {
       {/* menampilkan Article component */}
       {posts.map((props, index) => (
         <Article {...props} key={index} />
-      ))}
-
-      {/* menampilkan ExternalPosts */}
-      <h2>External Posts</h2>
-      {externalPosts.map((item, index) => (
-        <div key={index}>
-          <p>- {item.title}</p>
-        </div>
       ))}
     </>
   );
