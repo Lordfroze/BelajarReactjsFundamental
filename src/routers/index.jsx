@@ -5,7 +5,8 @@ import Home from "../pages/index";
 import About from "../pages/About";
 import Blog from "../pages/blogs/index";
 import Post from "../pages/blogs/_id";
-import { post, postById } from "../apis/loader";
+import JadwalSholat from "../pages/blogs/jadwalsholat";
+import { post, postById, jadwalSholat } from "../apis/loader";
 import ErrorPage from "../components/ErrorPage";
 
 export const router = createBrowserRouter([
@@ -31,6 +32,11 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/jadwalsholat",
+        element: <JadwalSholat />,
+        loader: jadwalSholat,
       },
     ],
   },
